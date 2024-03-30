@@ -21,89 +21,91 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: Text('Home'),
       ),
-      body: Column(
-        // Wrap everything in a Column
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: TextField(
-              onChanged: (value) {
-                setState(() {
-                  searchText = value;
-                });
-              },
-              decoration: InputDecoration(
-                hintText: 'Search...',
-                suffixIcon: IconButton(
-                  onPressed: () {
-                    setState(() {
-                      searchText = '';
-                    });
-                  },
-                  icon: Icon(Icons.clear),
+      body: SingleChildScrollView(
+        child: Column(
+          // Wrap everything in a Column
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: TextField(
+                onChanged: (value) {
+                  setState(() {
+                    searchText = value;
+                  });
+                },
+                decoration: InputDecoration(
+                  hintText: 'Search...',
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      setState(() {
+                        searchText = '';
+                      });
+                    },
+                    icon: Icon(Icons.clear),
+                  ),
                 ),
               ),
             ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Image.asset(
-                'images/tumblr_d9bedef29fb87de7215092060e440e16_18aebf5a_1280.jpg',
-                width: MediaQuery.of(context).size.width,
-                height: 150,
-                fit: BoxFit.cover,
-              ),
-            ],
-          ),
-          SizedBox(height: 20),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    showMinimalistImages = true;
-                  });
-                },
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.black,
-                  onPrimary: Color.fromARGB(255, 255, 255, 255),
-                ),
-                child: Text(button1),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  setState(() {});
-                },
-                child: Text(button2),
-              ),
-            ],
-          ),
-          SizedBox(height: 20),
-          // Add your additional widgets below the Row
-          if (showMinimalistImages)
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Image.asset(
-                  'images/tumblr_8cadc6329c0b7c676a4f646f5dd2f34f_66b85fca_1280.jpg',
-                  width: 250,
-                ),
-                SizedBox(width: 10),
-                Image.asset(
-                  'images/366ffb9daeea98944c825c97db94d77f.jpg',
-                  width: 250,
+                  'images/tumblr_d9bedef29fb87de7215092060e440e16_18aebf5a_1280.jpg',
+                  width: MediaQuery.of(context).size.width,
+                  height: 150,
+                  fit: BoxFit.cover,
                 ),
               ],
             ),
-        ],
+            SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      showMinimalistImages = true;
+                    });
+                  },
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.black,
+                    onPrimary: Color.fromARGB(255, 255, 255, 255),
+                  ),
+                  child: Text(button1),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    setState(() {});
+                  },
+                  child: Text(button2),
+                ),
+              ],
+            ),
+            SizedBox(height: 20),
+            // Add your additional widgets below the Row
+            if (showMinimalistImages)
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    'images/tumblr_8cadc6329c0b7c676a4f646f5dd2f34f_66b85fca_1280.jpg',
+                    width: 250,
+                  ),
+                  SizedBox(width: 10),
+                  Image.asset(
+                    'images/366ffb9daeea98944c825c97db94d77f.jpg',
+                    width: 250,
+                  ),
+                ],
+              ),
+          ],
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const [
